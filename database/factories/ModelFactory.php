@@ -30,13 +30,13 @@ $factory->define(App\Usuario::class, function (Faker\Generator $faker) {
 		'apmaterno' => $faker->lastName,
 		'email' => $faker->email,
 		'password' => password_hash('pass', PASSWORD_BCRYPT),
-		'rol_id' => mt_rand(1, 10)
+		'rol_id' => mt_rand(1, 15)
 	];
 });
 
 $factory->define(App\Firma::class, function (Faker\Generator $faker) {
 	return [
-		'usuario_id' => mt_rand(1, 100),
+		'usuario_id' => mt_rand(1, 60),
 		'firma' => str_random(10)
 	];
 });

@@ -15,6 +15,8 @@ class DatabaseSeeder extends Seeder
 	 *
 	 * @return void
 	 */
+	protected $contador = 1;
+
 	public function run()
 	{
 		// $this->call('UsersTableSeeder');
@@ -36,10 +38,17 @@ class DatabaseSeeder extends Seeder
 				// Para cada rol credo, asigna "n" permisos (n es el segundo param de array_rand)
 				$rol
 					->permisos()
-					->attach( array_rand(range(1, 5), 2) );
+					->attach( array_rand(range(1, 15), 2) );
 			});
 
-		factory(App\Usuario::class, 60)->create();
-
+		factory(App\Usuario::class, 60)
+			->create()
+			->each(function($usuario) {
+				factory(App\Firma::class)->create([
+					'firma' => str_random(10),
+					'usuario_id' => $this->contador
+				]);
+				$this->contador++;
+			});
 	}
 }
