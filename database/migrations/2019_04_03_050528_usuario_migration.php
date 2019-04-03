@@ -20,6 +20,8 @@ class UsuarioMigration extends Migration
             $table->string('apmaterno');
             $table->string('email')->unique();
             $table->string('password');
+            $table->bigInteger('rol_id')->unsigned();
+            $table->foreign('rol_id')->references('id')->on('roles');
             $table->timestamps();
         });
     }
