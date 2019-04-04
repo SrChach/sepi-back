@@ -14,3 +14,15 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->get('/permisos', 'PermisoController@index');
+$router->get('/permisos/{permisos}', 'PermisoController@show');
+
+$router->get('/roles', 'RolController@index');
+$router->get('/roles/{roles}', 'RolController@show');
+
+$router->get('/usuarios', 'UsuarioController@index');
+$router->get('/usuarios/{usuarios}', 'UsuarioController@show');
+
+$router->get('/firmas', 'FirmaController@index');
+$router->get('/firmas/{firmas}', 'FirmaController@show');
