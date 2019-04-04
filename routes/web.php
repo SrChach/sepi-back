@@ -11,15 +11,19 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
-
 $router->get('/permisos', 'PermisoController@index');
 $router->get('/permisos/{permisos}', 'PermisoController@show');
+$router->post('/permisos', 'PermisoController@store');
+$router->put('/permisos/{permisos}', 'PermisoController@update');
+$router->patch('/permisos/{permisos}', 'PermisoController@update');
 
 $router->get('/roles', 'RolController@index');
 $router->get('/roles/{roles}', 'RolController@show');
+$router->post('/roles/{roles}', 'RolController@store');
+
+$router->get('/roles/{rol_id}/permisos', 'PermisoRolController@index');
+$router->post('/roles/{rol_id}/permisos/{permiso_id}', 'PermisoRolController@store');
+$router->delete('/roles/{rol_id}/permisos/{permiso_id}', 'PermisoRolController@destroy');
 
 $router->get('/usuarios', 'UsuarioController@index');
 $router->get('/usuarios/{usuarios}', 'UsuarioController@show');
