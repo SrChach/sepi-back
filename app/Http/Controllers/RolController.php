@@ -24,4 +24,17 @@ class RolController extends Controller
 			return $this->responder_error('rol no encontrado', 404);
 		}
 
+		public function update(Request $request, $rol_id){
+
+			$rol = Rol::find($rol_id);
+			if(!$rol)
+				return $this->responder_error("El id proporcionado no corresponde a ningun rol", 404);
+
+			$this->validate($request, ['nombre' => 'required']);
+			$rol->nombre = $request->get('nombre');
+			$rol->save();
+
+			return $this->responder("El rol {$rol->id} ha sido editado", 200); 
+		}
+
 }

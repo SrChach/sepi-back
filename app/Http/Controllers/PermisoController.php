@@ -39,7 +39,7 @@ class PermisoController extends Controller
 			if(!$permiso)
 				return $this->responder_error("El permiso no existe", 404);
 
-			$this->validate($request, ['nombre' => 'required']);	
+			$this->validate($request, ['nombre' => 'required']);
 			$nombre = $request->get('nombre');
 			$permiso->nombre = $nombre;
 			
