@@ -17,10 +17,10 @@ class UsuarioMigration extends Migration
             $table->bigIncrements('id');
             $table->string('nombre');
             $table->string('appaterno');
-            $table->string('apmaterno');
+            $table->string('apmaterno')->nullable();
             $table->string('email')->unique();
             $table->string('password');
-            $table->bigInteger('rol_id')->unsigned();
+            $table->bigInteger('rol_id')->unsigned()->nullable();
             $table->foreign('rol_id')->references('id')->on('roles');
             $table->timestamps();
         });
